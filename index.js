@@ -1,9 +1,18 @@
 const Koa = require('koa')
-const app = new Koa()
+const Router = require('koa-router')
+const service = require('./service')
+const moment = require('moment')
 
-app.use(async ctx => {
-  ctx.body = 'Hello, Koa!'
+const app = new Koa()
+const router = new Router()
+
+app.use(async (ctx, next) => {
+  if (ctx.path === '/') {
+    ctx.body = 'home'
+  } else {
+    await next
+  }
 })
 
 app.listen(3000)
-console.log("127.0.0.1:3000 start...")
+console.log("127.0.0.1:3000 start at ----- " + moment().format("YYYY-MM-DD HH:mm:ss"))
