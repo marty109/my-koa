@@ -1,6 +1,6 @@
 const Koa = require('koa')
 const Router = require('koa-router')
-const service = require('./service')
+const getSomething = require('./service/getSomething')
 const moment = require('moment')
 
 const app = new Koa()
